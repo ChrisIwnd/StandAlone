@@ -1,0 +1,459 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{11909079-13E9-4CB2-9463-9442CE153D25}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>StandAlone</RootNamespace>
+    <AssemblyName>StandAlone</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Google.Protobuf, Version=3.5.1.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Protobuf.3.5.1\lib\net45\Google.Protobuf.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data, Version=8.0.15.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.8.0.15\lib\net452\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Configuration.Install" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing.Design" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BusinessesTypesForms\AddBusinessesTypes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BusinessesTypesForms\AddBusinessesTypes.Designer.cs">
+      <DependentUpon>AddBusinessesTypes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessesTypesForms\DeleteBusinessesTypes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BusinessesTypesForms\DeleteBusinessesTypes.Designer.cs">
+      <DependentUpon>DeleteBusinessesTypes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessesTypesForms\EditBusinessesTypes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BusinessesTypesForms\EditBusinessesTypes.Designer.cs">
+      <DependentUpon>EditBusinessesTypes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessForms\AddBusinessForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BusinessForms\AddBusinessForm.Designer.cs">
+      <DependentUpon>AddBusinessForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessForms\DeleteBusinessForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BusinessForms\DeleteBusinessForm.Designer.cs">
+      <DependentUpon>DeleteBusinessForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BusinessForms\EdiBusinessForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BusinessForms\EdiBusinessForm.Designer.cs">
+      <DependentUpon>EdiBusinessForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DaysForms\AddDays.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DaysForms\AddDays.Designer.cs">
+      <DependentUpon>AddDays.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DaysForms\DeleteDays.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DaysForms\DeleteDays.Designer.cs">
+      <DependentUpon>DeleteDays.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DaysForms\EditDays.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DaysForms\EditDays.Designer.cs">
+      <DependentUpon>EditDays.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DCom.cs" />
+    <Compile Include="LocationForms\AddLocation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LocationForms\AddLocation.Designer.cs">
+      <DependentUpon>AddLocation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LocationForms\DeleteLocation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LocationForms\DeleteLocation.Designer.cs">
+      <DependentUpon>DeleteLocation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LocationForms\EditLocation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LocationForms\EditLocation.Designer.cs">
+      <DependentUpon>EditLocation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoginForm.Designer.cs">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LoginForms\AddLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoginForms\AddLogin.Designer.cs">
+      <DependentUpon>AddLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LoginForms\DeleteLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoginForms\DeleteLogin.Designer.cs">
+      <DependentUpon>DeleteLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LoginForms\EditLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoginForms\EditLogin.Designer.cs">
+      <DependentUpon>EditLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MunicipalityForms\AddMunicipality.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MunicipalityForms\AddMunicipality.Designer.cs">
+      <DependentUpon>AddMunicipality.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MunicipalityForms\DeleteMunicipality.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MunicipalityForms\DeleteMunicipality.Designer.cs">
+      <DependentUpon>DeleteMunicipality.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MunicipalityForms\EditMunicipality.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MunicipalityForms\EditMunicipality.Designer.cs">
+      <DependentUpon>EditMunicipality.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ProvinceForms\AddProvince.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProvinceForms\AddProvince.Designer.cs">
+      <DependentUpon>AddProvince.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProvinceForms\DeleteProvince.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProvinceForms\DeleteProvince.Designer.cs">
+      <DependentUpon>DeleteProvince.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProvinceForms\EditProvince.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProvinceForms\EditProvince.Designer.cs">
+      <DependentUpon>EditProvince.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RatingsForms\AddRatingsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RatingsForms\AddRatingsForm.Designer.cs">
+      <DependentUpon>AddRatingsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RatingsForms\DeleteRatingsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RatingsForms\DeleteRatingsForm.Designer.cs">
+      <DependentUpon>DeleteRatingsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RatingsForms\EditRatingsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RatingsForms\EditRatingsForm.Designer.cs">
+      <DependentUpon>EditRatingsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ReservationForms\AddReservationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReservationForms\AddReservationForm.Designer.cs">
+      <DependentUpon>AddReservationForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ReservationForms\DeleteReservationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReservationForms\DeleteReservationForm.Designer.cs">
+      <DependentUpon>DeleteReservationForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ReservationForms\EditReservationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReservationForms\EditReservationForm.Designer.cs">
+      <DependentUpon>EditReservationForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserForms\AddUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserForms\AddUser.Designer.cs">
+      <DependentUpon>AddUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserForms\DeleteUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserForms\DeleteUser.Designer.cs">
+      <DependentUpon>DeleteUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserForms\EditUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserForms\EditUser.Designer.cs">
+      <DependentUpon>EditUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserTypesForms\AddUsersTypes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserTypesForms\AddUsersTypes.Designer.cs">
+      <DependentUpon>AddUsersTypes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserTypesForms\DeleteUsersTypes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserTypesForms\DeleteUsersTypes.Designer.cs">
+      <DependentUpon>DeleteUsersTypes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserTypesForms\EditUsersTypes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserTypesForms\EditUsersTypes.Designer.cs">
+      <DependentUpon>EditUsersTypes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WorkHoursForms\AddWorkHours.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WorkHoursForms\AddWorkHours.Designer.cs">
+      <DependentUpon>AddWorkHours.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WorkHoursForms\DeleteWorkHours.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WorkHoursForms\DeleteWorkHours.Designer.cs">
+      <DependentUpon>DeleteWorkHours.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WorkHoursForms\EditWorkHours.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WorkHoursForms\EditWorkHours.Designer.cs">
+      <DependentUpon>EditWorkHours.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="BusinessesTypesForms\AddBusinessesTypes.resx">
+      <DependentUpon>AddBusinessesTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BusinessesTypesForms\DeleteBusinessesTypes.resx">
+      <DependentUpon>DeleteBusinessesTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BusinessesTypesForms\EditBusinessesTypes.resx">
+      <DependentUpon>EditBusinessesTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BusinessForms\AddBusinessForm.resx">
+      <DependentUpon>AddBusinessForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BusinessForms\DeleteBusinessForm.resx">
+      <DependentUpon>DeleteBusinessForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BusinessForms\EdiBusinessForm.resx">
+      <DependentUpon>EdiBusinessForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DaysForms\AddDays.resx">
+      <DependentUpon>AddDays.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DaysForms\DeleteDays.resx">
+      <DependentUpon>DeleteDays.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DaysForms\EditDays.resx">
+      <DependentUpon>EditDays.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LocationForms\AddLocation.resx">
+      <DependentUpon>AddLocation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LocationForms\DeleteLocation.resx">
+      <DependentUpon>DeleteLocation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LocationForms\EditLocation.resx">
+      <DependentUpon>EditLocation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoginForm.resx">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoginForms\AddLogin.resx">
+      <DependentUpon>AddLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoginForms\DeleteLogin.resx">
+      <DependentUpon>DeleteLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoginForms\EditLogin.resx">
+      <DependentUpon>EditLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MunicipalityForms\AddMunicipality.resx">
+      <DependentUpon>AddMunicipality.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MunicipalityForms\DeleteMunicipality.resx">
+      <DependentUpon>DeleteMunicipality.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MunicipalityForms\EditMunicipality.resx">
+      <DependentUpon>EditMunicipality.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="ProvinceForms\AddProvince.resx">
+      <DependentUpon>AddProvince.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProvinceForms\DeleteProvince.resx">
+      <DependentUpon>DeleteProvince.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProvinceForms\EditProvince.resx">
+      <DependentUpon>EditProvince.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RatingsForms\AddRatingsForm.resx">
+      <DependentUpon>AddRatingsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RatingsForms\DeleteRatingsForm.resx">
+      <DependentUpon>DeleteRatingsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RatingsForms\EditRatingsForm.resx">
+      <DependentUpon>EditRatingsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReservationForms\AddReservationForm.resx">
+      <DependentUpon>AddReservationForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReservationForms\DeleteReservationForm.resx">
+      <DependentUpon>DeleteReservationForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReservationForms\EditReservationForm.resx">
+      <DependentUpon>EditReservationForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserForms\AddUser.resx">
+      <DependentUpon>AddUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserForms\DeleteUser.resx">
+      <DependentUpon>DeleteUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserForms\EditUser.resx">
+      <DependentUpon>EditUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserTypesForms\AddUsersTypes.resx">
+      <DependentUpon>AddUsersTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserTypesForms\DeleteUsersTypes.resx">
+      <DependentUpon>DeleteUsersTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserTypesForms\EditUsersTypes.resx">
+      <DependentUpon>EditUsersTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WorkHoursForms\AddWorkHours.resx">
+      <DependentUpon>AddWorkHours.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WorkHoursForms\DeleteWorkHours.resx">
+      <DependentUpon>DeleteWorkHours.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WorkHoursForms\EditWorkHours.resx">
+      <DependentUpon>EditWorkHours.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.6.1 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
