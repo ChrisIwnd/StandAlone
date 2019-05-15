@@ -1,0 +1,196 @@
+/*Creation of TeamProject DataBase*/
+CREATE DATABASE `TeamProject`;
+
+/*Creation of businesses_types table*/
+CREATE TABLE `businesses_types` (
+	`Type` VARCHAR(50) NOT NULL,
+	PRIMARY KEY (`Type`)
+);
+
+/*Insert Values in businesses_types table*/
+INSERT INTO businesses_types VALUES('Food');
+INSERT INTO businesses_types VALUES('Coffee');
+INSERT INTO businesses_types VALUES('Museum');
+
+
+/*Creation of days table*/
+CREATE TABLE `days` (
+	`Name` VARCHAR(50) NOT NULL,
+	PRIMARY KEY (`Name`)
+);
+
+/*Insert Values in businesses_types table*/
+INSERT INTO days VALUES('Monday');
+INSERT INTO days VALUES('Tuesday');
+INSERT INTO days VALUES('Wednesday');
+INSERT INTO days VALUES('Thursday');
+INSERT INTO days VALUES('Friday');
+INSERT INTO days VALUES('Saturday');
+INSERT INTO days VALUES('Sunday');
+
+/*Creation of users_types table*/
+CREATE TABLE `users_types` (
+	`Type` VARCHAR(50) NOT NULL,
+	PRIMARY KEY (`Type`)
+);
+
+/*Insert Values in users_types table*/
+INSERT INTO users_types VALUES('Admin');
+INSERT INTO users_types VALUES('User');
+INSERT INTO users_types VALUES('Collaborator');
+
+/*Creation of users table*/
+CREATE TABLE `users` (
+    `Username` VARCHAR(50) NOT NULL,
+	`First_Name` VARCHAR(50) NOT NULL,
+	`Last_Name` VARCHAR(50) NOT NULL,
+	`Email` VARCHAR(50) NOT NULL,
+	`Telephone` VARCHAR(50) NOT NULL,
+	`Type` VARCHAR(50) NOT NULL,
+	`Image` VARCHAR(50),
+    `TaxpayerID` VARCHAR(50),
+	PRIMARY KEY (`Username`),
+	CONSTRAINT `FK_users_users_types` FOREIGN KEY (`Type`) REFERENCES `users_types` (`Type`) ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+/*Insert Values in users table*/
+INSERT INTO users(`Username`, `First_Name`, `Last_Name`, `Email`, `Telephone`, `Type`, `TaxpayerID`) VALUES('admin', 'admin', 'admin', 'admin', 'admin', 'Admin', '10');
+INSERT INTO users(`Username`, `First_Name`, `Last_Name`, `Email`, `Telephone`, `Type`, `TaxpayerID`) VALUES('user', 'user', 'user', 'user', 'user', 'User', '10');
+INSERT INTO users(`Username`, `First_Name`, `Last_Name`, `Email`, `Telephone`, `Type`, `TaxpayerID`) VALUES('collaborator', 'collaborator', 'collaborator', 'collaborator', 'collaborator', 'Collaborator', '10');
+
+/*Creation of login table*/
+CREATE TABLE `login` (
+	`Username` VARCHAR(50) NOT NULL,
+	`Password` VARCHAR(50) NOT NULL,
+	CONSTRAINT `login_users_1` FOREIGN KEY (`Username`) REFERENCES `users` (`Username`) ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+/*Insert Values in login table*/
+INSERT INTO login VALUES('admin', '1');
+INSERT INTO login VALUES('user', '2');
+INSERT INTO login VALUES('collaborator', '3');
+
+/*Creation of province table*/
+CREATE TABLE `province` (
+	`Province_Name` VARCHAR(50) NOT NULL,
+	PRIMARY KEY (`Province_Name`)
+);
+
+/*Insert Values in province table*/
+INSERT INTO province VALUES('Thessaloniki');
+
+/*Creation of municipality table*/
+CREATE TABLE `municipality` (
+	`Municipality_Name` VARCHAR(50) NOT NULL,
+	`Province` VARCHAR(50) NOT NULL,
+	PRIMARY KEY (`Municipality_Name`),
+	CONSTRAINT `FK_municipality_province` FOREIGN KEY (`Province`) REFERENCES `province` (`Province_Name`) ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+/*Insert Values in municipality table*/
+INSERT INTO municipality VALUES('Euosmos', 'Thessaloniki');
+INSERT INTO municipality VALUES('Kalamaria', 'Thessaloniki');
+INSERT INTO municipality VALUES('Kordelio', 'Thessaloniki');
+INSERT INTO municipality VALUES('Stauroypoli', 'Thessaloniki');
+INSERT INTO municipality VALUES('Kentro', 'Thessaloniki');
+INSERT INTO municipality VALUES('Pulaia', 'Thessaloniki');
+INSERT INTO municipality VALUES('Ampwlokipoi', 'Thessaloniki');
+INSERT INTO municipality VALUES('Sindo', 'Thessaloniki');
+INSERT INTO municipality VALUES('Toumpa', 'Thessaloniki');
+
+/*Creation of location table*/
+CREATE TABLE `location` (
+	`ID` INT(11) NOT NULL AUTO_INCREMENT,
+	`Address_Name` VARCHAR(50) NOT NULL,
+	`Postal_Code` INT(11) NOT NULL,
+	`Long` FLOAT NOT NULL,
+	`Lat` FLOAT NOT NULL,
+	`Address_Number` INT(11) NOT NULL,
+	`Municipality` VARCHAR(50) NOT NULL,
+	PRIMARY KEY (`ID`),
+	CONSTRAINT `FK_location_municipality` FOREIGN KEY (`Municipality`) REFERENCES `municipality` (`Municipality_Name`) ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+/*Insert Values in location table*/
+INSERT INTO location(`Address_Name`, `Postal_Code`, `Long`, `Lat`, `Address_Number`, `Municipality`) VALUES('Iasonidou', '56334', '10', '10', '66', 'Euosmos');
+INSERT INTO location(`Address_Name`, `Postal_Code`, `Long`, `Lat`, `Address_Number`, `Municipality`) VALUES('Zerbidh', '56334', '100', '100', '13', 'Kordelio');
+INSERT INTO location(`Address_Name`, `Postal_Code`, `Long`, `Lat`, `Address_Number`, `Municipality`) VALUES('Paok', '56334', '4', '4', '4', 'Toumpa');
+
+/*Creation of work hours*/
+CREATE TABLE `work_hours` (
+	`ID` INT(11) NOT NULL AUTO_INCREMENT,
+	`Start_Time` TIME NOT NULL,
+	`End_Time` TIME NOT NULL,
+	PRIMARY KEY (`ID`)
+);
+
+/*Insert Values in work_hours table*/
+INSERT INTO work_hours(`Start_Time`, `End_Time`) VALUES('15:57:34', '15:59:36');
+INSERT INTO work_hours(`Start_Time`, `End_Time`) VALUES('16:00:00', '20:00:00');
+INSERT INTO work_hours(`Start_Time`, `End_Time`) VALUES('15:00:00', '19:00:00');
+
+/*Creation of businesses table*/
+CREATE TABLE `businesses` (
+	`ID` INT(11) NOT NULL AUTO_INCREMENT,
+	`Business_Name` VARCHAR(50) NOT NULL,
+	`Type` VARCHAR(50) NOT NULL,
+    `Category` VARCHAR(50) NOT NULL,
+	`Location_ID` INT(11) NOT NULL,
+	`Telephone` VARCHAR(50) NOT NULL,
+	`Website` VARCHAR(50) NOT NULL DEFAULT '',
+	`Description` VARCHAR(50) NOT NULL DEFAULT '',
+	`Work_hours_ID` INT(11) NOT NULL,
+	`User` VARCHAR(50) NOT NULL,
+	`Allow_Reservation` INT(11) NOT NULL,
+	PRIMARY KEY (`ID`),
+	CONSTRAINT `FK_businesses_businesses_types` FOREIGN KEY (`Type`) REFERENCES `businesses_types` (`Type`) ON UPDATE CASCADE ON DELETE CASCADE,
+	CONSTRAINT `FK_businesses_location` FOREIGN KEY (`Location_ID`) REFERENCES `location` (`ID`) ON UPDATE CASCADE ON DELETE CASCADE,
+	CONSTRAINT `FK_businesses_users` FOREIGN KEY (`User`) REFERENCES `users` (`Username`) ON UPDATE CASCADE ON DELETE CASCADE,
+	CONSTRAINT `FK_businesses_work_hours` FOREIGN KEY (`Work_hours_ID`) REFERENCES `work_hours` (`ID`) ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+/*Insert Values in businesses table*/
+INSERT INTO businesses(`Business_Name`, `Type`, `Category`, `Location_ID`, `Telephone`, `Website`, `Description`, `Work_hours_ID`, `User`, `Allow_Reservation`) VALUES ('White Tower', 'Museum', 'Museum', '1', '0', 'aaa', 'aaa', '1', 'admin', '0');
+INSERT INTO businesses(`Business_Name`, `Type`, `Category`, `Location_ID`, `Telephone`, `Website`, `Description`, `Work_hours_ID`, `User`, `Allow_Reservation`) VALUES ('Dia xeiros aretou', 'Food', 'Fast Food', '2', '1', 'bbb', 'bbb', '2', 'user', '1');
+INSERT INTO businesses(`Business_Name`, `Type`, `Category`, `Location_ID`, `Telephone`, `Website`, `Description`, `Work_hours_ID`, `User`, `Allow_Reservation`) VALUES ('Olympion', 'Coffee', 'Coffe', '3', '2', 'ccc', 'c', '3', 'collaborator', '1');
+
+/*Creation of reservation table*/
+CREATE TABLE `reservation` (
+	`ID` INT NOT NULL AUTO_INCREMENT,
+	`User` VARCHAR(50) NOT NULL,
+	`BusinessID` INT NOT NULL,
+	`Date` DATE NOT NULL,
+	`Persons` INT NOT NULL,
+	PRIMARY KEY (`ID`),
+	CONSTRAINT `FK_reservation_users` FOREIGN KEY (`User`) REFERENCES `users` (`Username`) ON UPDATE CASCADE ON DELETE CASCADE,
+	CONSTRAINT `FK_reservation_businesses` FOREIGN KEY (`BusinessID`) REFERENCES `businesses` (`ID`) ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+/*Insert Values in reservation table*/
+INSERT INTO reservation(`User`, `BusinessID`, `Date`, `Persons`) VALUES('admin', '1', '2019-05-13', '10');
+INSERT INTO reservation(`User`, `BusinessID`, `Date`, `Persons`) VALUES('user', '2', '2019-05-12', '5');
+INSERT INTO reservation(`User`, `BusinessID`, `Date`, `Persons`) VALUES('collaborator', '3', '2019-05-11', '2');
+
+/*Creation of images table*/
+CREATE TABLE `images` (
+	`ID` INT NOT NULL AUTO_INCREMENT,
+	`BusinessID` INT NOT NULL,
+	`Image` VARCHAR(50),
+	PRIMARY KEY (`ID`),
+	CONSTRAINT `FK_images_business` FOREIGN KEY (`BusinessID`) REFERENCES `businesses` (`ID`) ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+/*Creation of Ratings table*/
+CREATE TABLE `Ratings` (
+	`ID` INT NOT NULL AUTO_INCREMENT,
+	`Rating_Value` INT NOT NULL,
+	`Username` VARCHAR(50) NOT NULL,
+	`Comment` LONGTEXT NOT NULL,
+	PRIMARY KEY (`ID`),
+	CONSTRAINT `FK_ratings_users` FOREIGN KEY (`Username`) REFERENCES `users` (`Username`) ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+/*Insert Values in Ratings table*/
+INSERT INTO Ratings(`Rating_Value`, `Username`, `Comment`) VALUES('2', 'admin', 'Nice');
+INSERT INTO Ratings(`Rating_Value`, `Username`, `Comment`) VALUES('3', 'user', 'Bad');
+INSERT INTO Ratings(`Rating_Value`, `Username`, `Comment`) VALUES('4', 'collaborator', 'Meh');
